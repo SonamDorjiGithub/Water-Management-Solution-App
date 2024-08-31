@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title text-center>Settings</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12" style="text-align:center;">
+        <br><img src="assets/img/dhi.png" height="100px" width="160px">
+      </ion-col>
+    </ion-row><br><br>
+    <ion-row>
+      <ion-col size="8" offset="2" style="text-align:center;">
+        <ion-input color="secondary" [(ngModel)]="host" class="input_border" placeholder="Host IP/Domain"></ion-input>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="8" offset="2" style="text-align:center;">
+        <ion-input color="secondary" class="input_border" type="number" placeholder="Port" [(ngModel)]="port"></ion-input>          
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="8" offset="2" style="text-align:center;">
+        <ion-input color="secondary" class="input_border" placeholder="Client ID" [(ngModel)]="clientId"></ion-input>          
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="8" offset="2" style="text-align:center;">
+        <ion-input color="secondary" class="input_border" placeholder="Subscribe Topic" [(ngModel)]="subscribeTopic"></ion-input>          
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="8" offset="2">
+        <ion-button color="primary" expand="full" (click)="saveConfiguration()"> Save </ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="8" offset="2">
+        <ion-button color="medium" expand="full" (click)="clearConfig()"> Clear </ion-button>
+      </ion-col>
+    </ion-row>
+    <!-- <br><br><br> -->
+  </ion-grid>
+</ion-content>

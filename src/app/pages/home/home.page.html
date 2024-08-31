@@ -1,0 +1,59 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <!-- <img src="assets/img/dhi.png" height="10%" width="10%"> -->
+    <ion-title text-center>Water Management</ion-title>
+    <ion-buttons slot="end">
+      <ion-button [routerLink]="['/login']">
+        <ion-icon slot="icon-only" name="log-in"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-content padding class="home">
+    <br><br>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="6" [routerLink]="['/overview']">
+          <ion-card style="text-align:center;">
+              <ion-icon color="secondary" name="trending-up" style="font-size:80pt;"></ion-icon>
+              <ion-card-content>
+                <span style="color:black;font-family: 'Arial', Helvetica, sans-serif;">Overview</span>
+              </ion-card-content>
+          </ion-card>
+        </ion-col>
+        <ion-col size="6" [routerLink]="['/login']">
+        <!-- <ion-col size="6"> -->
+          <ion-card style="text-align:center;">
+              <ion-icon color="secondary" name="settings" style="font-size:80pt"></ion-icon>
+              <ion-card-content>
+                <span style="color:black;font-family: 'Arial', Helvetica, sans-serif;">Control</span>
+              </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="6" [routerLink]="['/alarm']">
+          <ion-card style="text-align:center;">
+              <ion-icon color="secondary" name="warning" style="font-size:80pt"></ion-icon>
+              <ion-card-content>
+                <span style="color:black;font-family: 'Arial', Helvetica, sans-serif;">Alarms</span>
+              </ion-card-content>
+          </ion-card>
+        </ion-col>
+        <ion-col size="6" [routerLink]="['/setting']">
+          <ion-card style="text-align:center;">
+              <!-- <ion-icon color="secondary" name="pulse" style="font-size:80pt"></ion-icon> -->
+              <ion-icon color="secondary" name="build" style="font-size:80pt"></ion-icon>
+              <ion-card-content>
+                <span style="color:black;font-family: 'Arial', Helvetica, sans-serif;">Settings</span>
+              </ion-card-content>
+          </ion-card>  
+          </ion-col>
+      </ion-row>
+    </ion-grid>
+  
+  </ion-content>
+  
+</ion-content>

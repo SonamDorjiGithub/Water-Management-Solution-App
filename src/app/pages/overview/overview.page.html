@@ -1,0 +1,111 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title text-center>Overview</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<!-- <div *ngIf="contentShowStatus"> -->
+  <!-- <ion-list-header *ngIf="contentShowStatus" color="light">Tank Water Level (in Meter)</ion-list-header> -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title *ngIf="contentShowStatus">Tank Water Level (in Meter)</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <canvas #barChart></canvas>
+    </ion-card-content>
+  </ion-card>
+
+  <div *ngIf="contentShowStatus">
+  <!-- <ion-list-header color="light">Water Quality</ion-list-header> -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Water Quality</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-grid>
+        <ion-row>
+          <ion-col size="4" offset="3">
+            {{qualityNameArray[0]}}
+            <!-- TDS -->
+          </ion-col>
+          <ion-col size="3">
+            <ion-badge *ngIf="qualityValueArray[0]" color="light">{{qualityValueArray[0]}}</ion-badge>
+            <ion-badge *ngIf="!qualityValueArray[0]" color="danger">NA</ion-badge>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="4" offset="3">
+            {{qualityNameArray[1]}}
+            <!-- PH -->
+          </ion-col>
+          <ion-col size="3">
+            <ion-badge *ngIf="qualityValueArray[1]" color="light">{{qualityValueArray[1]}}</ion-badge>
+            <ion-badge *ngIf="!qualityValueArray[1]" color="danger">NA</ion-badge>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="4" offset="3">
+            {{qualityNameArray[2]}}
+          </ion-col>
+          <ion-col size="3">
+            <ion-badge *ngIf="qualityValueArray[2]" color="light">{{qualityValueArray[2]}}</ion-badge>
+            <ion-badge *ngIf="!qualityValueArray[2]" color="danger">NA</ion-badge>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- <ion-list-header color="light">Flow Rate (in m<sup style="font-size:small;  display: inline-block;">3</sup>/hour)</ion-list-header> -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Flow Rate (in m<sup style="font-size:small;  display: inline-block;">3</sup>/hour)</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-grid>
+        <ion-row>
+          <ion-col size="6">
+            <strong>Name</strong>
+          </ion-col>
+          <ion-col text-center size="3">
+            <strong>Rate</strong>
+          </ion-col>
+          <!-- <ion-col size="2" text-wrap>
+            <strong>State</strong>
+          </ion-col> -->
+          <ion-col size="3" text-wrap>
+            <strong>Pos</strong>
+          </ion-col>
+        </ion-row>
+        <ion-row *ngFor="let flowRateName of flowRateNameArray; index as i">
+          <ion-col size="6">
+            <span style="font-size:12px">{{i+1}}/ {{flowRateNameArray[i]}}</span>
+          </ion-col>
+          <ion-col size="3">
+            <ion-badge *ngIf="flowRateValueArray[i] > 1" color="success" style="font-size:12px">{{flowRateValueArray[i]}}</ion-badge>
+            <ion-badge *ngIf="flowRateValueArray[i] <= 1" color="danger" style="font-size:12px">{{flowRateValueArray[i]}}</ion-badge>
+            <ion-badge *ngIf="flowRateValueArray[i] == 'NaN'" color="warning" style="font-size:12px">NA</ion-badge>
+          </ion-col>
+          <!-- <ion-col size="2">
+            <ion-badge *ngIf="flowRateValvePositionArray[i] > 0" color="success">Open</ion-badge>
+            <ion-badge *ngIf="flowRateValvePositionArray[i] == 0" color="danger">Close</ion-badge>
+            <ion-badge *ngIf="flowRateValvePositionArray[i] == 'N'" color="warning">NA</ion-badge>
+          </ion-col> -->
+          <ion-col size="3">
+            <ion-badge *ngIf="flowRateValvePositionArray[i] > 0" color="success" style="font-size:12px">{{flowRateValvePositionArray[i]}}</ion-badge>
+            <ion-badge *ngIf="flowRateValvePositionArray[i] == 0" color="danger" style="font-size:12px">{{flowRateValvePositionArray[i]}}</ion-badge>
+            <ion-badge *ngIf="flowRateValvePositionArray[i] == 'N'" color="warning" style="font-size:12px">NA</ion-badge>
+            
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+  </div>
+</ion-content>
+
+

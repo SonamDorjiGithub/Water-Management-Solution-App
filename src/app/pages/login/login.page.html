@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title text-center>Login</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12" style="text-align:center;">
+        <br><img src="assets/img/dhi.png" height="100px" width="160px">
+      </ion-col>
+    </ion-row><br><br>
+    <ion-row>
+      <ion-col size="8" offset="2" style="text-align:center;">
+        <ion-input color="secondary" [(ngModel)]="userName" class="input_border" placeholder="Username"></ion-input>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="8" offset="2" style="text-align:center;">
+        <!-- <ion-input color="secondary" [(ngModel)]="password" class="input_border" type="tel" style="-webkit-text-security: disc; -moz-webkit-text-security: disc; -moz-text-security: disc;" placeholder="Password" [(ngModel)]="password"></ion-input>    -->
+        <ion-input color="secondary" class="input_border" type="password" placeholder="Password" [(ngModel)]="password">
+        </ion-input>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="8" offset="2">
+        <ion-button color="primary" expand="full" (click)="loginCheck()"> Login </ion-button>
+      </ion-col>
+    </ion-row>
+    <!-- <br><br><br> -->
+  </ion-grid>
+</ion-content>

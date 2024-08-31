@@ -1,0 +1,77 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title text-center>Control</ion-title>
+    <ion-buttons slot="end">
+      <!-- <ion-button [routerLink]="['/home']"> -->
+      <ion-button (click)="goHome()">
+        <ion-icon slot="icon-only" name="home"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content><br><br>
+  <ion-list>
+    <ion-row>
+      <ion-col size="4" offset="1">
+        <ion-label><strong><br>Flow Name:</strong> </ion-label>
+      </ion-col>
+      <ion-col size="6" class="input_border">
+        <!-- <ion-select placeholder="{{selectedflowName}}" text-wrap okText="Okay" (ionChange)="onChangeFlow()" [interfaceOptions]="customAlertOptions" interface="alert" cancelText="Dismiss" [(ngModel)]="selectedflowIndex">    since the default value inside option is not shown, placeholder has been used -->
+        <ion-select placeholder="{{selectedflowName}}" text-wrap okText="Okay" (ionChange)="onChangeFlow()" interface="alert" cancelText="Dismiss" [(ngModel)]="selectedflowIndex"> 
+          <ion-select-option text-wrap value="{{i}}" *ngFor="let nodeValveNameList of nodeValveNameArray; index as i">{{nodeValveNameArray[i]}}</ion-select-option>
+        </ion-select>
+      </ion-col>
+    </ion-row>
+    
+    <ion-row>
+      <ion-col text-center>
+        Present Value : 
+        <ion-badge *ngIf="fetchedRangeValue > 0" color="success">{{fetchedRangeValue}}</ion-badge>
+        <ion-badge *ngIf="fetchedRangeValue <= 0" color="danger">{{fetchedRangeValue}}</ion-badge>
+      </ion-col>
+      <ion-col text-center>
+        Status : 
+        <!-- <ion-badge *ngIf="fetchedStatus === 'ON' || fetchedStatus === 'OPEN'" color="success">{{fetchedStatus}}</ion-badge> -->
+        <!-- <ion-badge *ngIf="fetchedStatus === 'OFF' || fetchedStatus === 'CLOSE'" color="danger">{{fetchedStatus}}</ion-badge> -->
+        <ion-badge *ngIf="fetchedRangeValue > 0" color="success">OPEN</ion-badge>
+        <ion-badge *ngIf="fetchedRangeValue <= 0" color="danger">CLOSE</ion-badge>
+      </ion-col>
+    </ion-row>
+    <!-- <ion-row>
+      <ion-col text-center>
+        Actual Position :
+        <ion-badge color="success">{{incrementTest}}</ion-badge>
+      </ion-col>
+    </ion-row>  -->
+    <ion-row *ngIf="showProgressBar">
+      <ion-col text-center>
+        Response : 
+        <!-- <ion-badge color="success">{{responseMessage}}</ion-badge> -->
+        {{responseMessage}}
+      </ion-col>
+      <ion-col text-center>
+        From : 
+        <!-- <ion-badge color="success">{{responseFromNodeName}}</ion-badge> -->
+        {{responseFromNodeName}}
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="showProgressBar">
+      <ion-col>
+        <ion-progress-bar color="secondary" type="indeterminate"></ion-progress-bar>
+      </ion-col>
+    </ion-row>
+    <ion-item>
+      <ion-range min="0" [max]="rangeControlMax" [step]="rangeControlStep" ticks="true" pin="true" snaps="true" [(ngModel)]="selectedRangeValue">
+        <ion-icon size="small" slot="start" name="remove-circle"></ion-icon>
+        <ion-icon slot="end" name="add-circle"></ion-icon>
+      </ion-range>
+    </ion-item>
+
+    <ion-row>
+      <ion-col text-center>
+        <ion-button color="primary" (click)="sendMessage()"><ion-icon slot="icon-only" name="paper-plane"></ion-icon>Send</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-list>
+</ion-content>
